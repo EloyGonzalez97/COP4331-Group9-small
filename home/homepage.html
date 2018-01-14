@@ -1,0 +1,97 @@
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="homestyle.css">   
+</head>
+<body>
+    <section class = "top-section">
+       <div scroll id = "pageBody" class = "page-wrap">
+           
+           
+           
+           
+        <section class="intro-section">
+            <div class = "row">
+                <label class = "logo">PCM</label>
+                <span class="input-group-btn"><button class="btn" onclick="document.getElementById('id01').style.display='block'" type="button" style="float:right; margin-right: 20px;"><span>Login</span></button>
+                <div id="id01" class="modal">
+                  <form class="modal-content animate" action="/action_page.php">
+                      <br>
+                    <label class = "logo" style= "float: none; margin-left:35%">PCM</label>
+                      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                      <br>
+                      <div class="container">
+                          <input type="text" style = "height: 50px; width: 100%;" placeholder="Username" name="uname" required>
+                            <br><br>
+                          <input type="password" style = "height: 50px; width: 100%;" placeholder="Password" name="psw" required>
+                            <br><br>
+                          <button type="submit" class = "btn" style = "width: 100%; margin-left: 0;">Login</button>
+                        </div>
+
+   
+  </form>
+</div>
+                </span>
+            </div>
+            <div class="top-title">
+            <h1 class="text">Always stay connected, no matter where you are.</h1>
+             </div>
+            <div class= "cover">
+            </div>
+            <div class="sign-up">
+                <div class = "sign-form">
+                    <br>
+                <label class = "form-title">Create your account</label>
+                    <br><br>
+                <input type="text" style = "width: 100%; height: 30px;" placeholder = "First name">
+                <br><br>
+                <input type = "text" style = "width: 100%; height: 30px;" placeholder="Last name">
+                <br><br>
+                <input type = "text" style = "width: 100%; height: 30px;" placeholder="Email/Username">
+                <br><br>
+                <input type="password" style = "width: 100%; height: 30px;" placeholder="Password">
+                <br><br>
+                <input type="text" style = "width: 100%; height: 30px;" placeholder="Business">
+                <br><br>
+                <input type = "text"style = "width: 100%; height: 30px;" placeholder="Phone number">
+
+                <br><br>
+                </div>    
+                <div class="col-xs-6">
+                <div class ="input-group">
+                    <span class="input-group-btn">
+                        <button class="btn" type="button"><span>Sign Up</span></button>
+                </span>
+                </div>
+                </div>
+                
+            </div>
+           
+    </section>
+    </div>
+    </section>
+    <section class = "extra-section">
+        <div class = "contact-info col-sm-3">
+            <img class="contact" src="images/contact.png" width="200" height="200">
+            <div class = "contact-text">
+                <h1 class = "extra-contact-text"> Keep all of your contacts in one simple place</h1>
+            </div>
+        </div>
+        <div class = "search-info col-sm-3">
+            <img class="contact" src="images/search.png" width="200" height="200">
+            <h1 class = "extra-search-text"> Search through all your contacts with ease</h1>
+        </div>
+        <div class = "last-info col-sm-3">
+            <img class="contact" src="images/handshake.png" width="200" height="200">
+            <h1 class = "extra-last-text"> Strengthen and maintain all your relationships</h1>
+        </div>
+        
+    </section>
+    <footer>
+        <div class = "footCopy">
+            <br>
+            &copy; Copyright 2018 Personal Contact Manager
+        </div>
+    </footer>
+    <script src="homepage.js"></script>
+</body>
+</html>
