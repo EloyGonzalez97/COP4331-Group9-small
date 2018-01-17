@@ -172,7 +172,8 @@ img.avatar {
 }
 
 .container {
-    padding: 16px;
+    padding: 30px;
+    padding-top: 15px;
 }
 
 span.psw {
@@ -199,7 +200,7 @@ span.psw {
     border: 1px solid #888;
     border-radius: 25px;
     width: 30%;
-    height: 50%;
+    height: auto;
 }
 
 .close {
@@ -213,7 +214,7 @@ span.psw {
 
 .close:hover,
 .close:focus {
-    color: #5cdb95;
+    color: red;
     cursor: pointer;
 }
 .animate {
