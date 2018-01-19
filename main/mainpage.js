@@ -1,5 +1,5 @@
-var $rows = $('#contactTable tr');
 $('#contactInput').keyup(function() {
+    var $rows = $('#contactTable tr');
     var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
     
     $rows.show().filter(function() {
@@ -23,7 +23,6 @@ var fName = par.children("td:nth-child(3)");
 var lName = par.children("td:nth-child(4)");
 var phone = par.children("td:nth-child(5)"); 
 var email = par.children("td:nth-child(6)"); 
-var business = par.children("td:nth-child(7)");
 
 dButton.html("<span class = 'removeContact' onclick='deleteRow(this)'>&times;</span>");
 eButton.html("<span class = 'editContact' onclick='editRow()'>&#43;</span>"); 
@@ -31,7 +30,6 @@ eButton.html("<span class = 'editContact' onclick='editRow()'>&#43;</span>");
 fName.html(fName.children("input[type=text]").val()); 
 lName.html(lName.children("input[type=text]").val());
 phone.html(phone.children("input[type=text]").val()); email.html(email.children("input[type=text]").val()); 
-business.html(business.children("input[type=text]").val());
 
 $(".editContact").bind("click", editRow);  
 };
@@ -49,7 +47,6 @@ function editRow(){
     var lName = par.children("td:nth-child(4)");
     var phone = par.children("td:nth-child(5)"); 
     var email = par.children("td:nth-child(6)"); 
-    var business = par.children("td:nth-child(7)");
     
     dbutton.html("<span class = 'removeContact'></span>");
     sButton.html("<span class = 'saveContact' onclick='saveRow()'>&#9745;</span>");
@@ -58,7 +55,6 @@ function editRow(){
     lName.html("<input type='text' id='tdlname' style='text-align:center;' value='"+lName.text()+"'/>");
     phone.html("<input type='text' id='tdphone' style='text-align:center;' value='"+phone.text()+"'/>");
     email.html("<input type='text' id='tdemail' style='text-align:center;' value='"+email.text()+"'/>");
-    business.html("<input type='text' id='tdbusiness' style='text-align:center;' value='"+business.text()+"'/>");
     
     
     $(".saveContact").bind("click", saveRow); 
@@ -72,7 +68,6 @@ function addContact(){
     var lname = document.getElementById('lname').value;
     var phone = document.getElementById('number').value;
     var email = document.getElementById('email').value;
-    var business = document.getElementById('business').value;
     
     var table = document.getElementById('contactTable');
     var row = table.insertRow(0);
@@ -83,7 +78,6 @@ function addContact(){
     var lastn = row.insertCell(3);
     var cell = row.insertCell(4);
     var em = row.insertCell(5);
-    var bus = row.insertCell(6);
 
     delbutton.innerHTML = "<span class = 'removeContact' onclick='deleteRow(this);'>&times;</span>";
     editbutton.innerHTML = "<span class = 'editContact'>&#43;</span>";
@@ -91,7 +85,6 @@ function addContact(){
     lastn.innerHTML = lname;
     cell.innerHTML = phone;
     em.innerHTML = email;
-    bus.innerHTML = business;
     
     $('#mod').get(0).reset();
     
