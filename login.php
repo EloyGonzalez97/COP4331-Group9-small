@@ -19,6 +19,8 @@
     if($result->num_rows > 0) {
       $row = $result->fetch_assoc();
       $id = $row["User_ID"];
+    } else {
+      $id = 0;
     }
 
   }
