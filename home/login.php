@@ -13,7 +13,7 @@
   if($conn->connect_error) {
     echo "BIG problem";
   } else {
-    $sql = "SELECT ID firstName, lastName, FROM Users where email='" . $email . "' and password='" . $pass . "'";
+    $sql = "SELECT ID, firstName, lastName, FROM Users where email='" . $email . "' and password='" . $pass . "'";
     $result = $conn->query($sql);
 
     if($result->num_rows > 0) {
