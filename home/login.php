@@ -13,7 +13,13 @@
   if($conn->connect_error) {
     echo "BIG problem";
   } else {
-    $sql = "CALL webalex_project_one.GetID($email, $password)";
-    $id = $conn->query($sql);
+    $sql = "CALL webalex_project_one.GetID($email, $pass)";
+    $result = $conn->query($sql);
+
+    if($result->num_rows > 0) {
+      $row = $result->fetch_assoc();
+      $id = $row["User_ID"];
+    }
+
   }
 ?>
