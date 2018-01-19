@@ -39,7 +39,7 @@ body{
         height: 100%;
     }
     .sign-up{
-        width: 300px;
+        width: 250px;
         height: auto;
         display: block;
         background-color:#fff; 
@@ -137,14 +137,15 @@ label{
 }
 .btn{
     font-size: 12px; 
-    margin-left: 40%;
+    margin-left: auto;
+    margin-right: auto;
     color: white ;
     width: 70px;
     height: 35px;
     background-color: #5cdb95;
     border: 0.5px solid #5cdb95;
     border-radius: 5px;
-    display: inline-block;
+    display: block;
 }
 .btn:hover{
     background-color: #7fff99;
@@ -237,7 +238,7 @@ span.psw {
     from {transform: scale(0)} 
     to {transform: scale(1)}
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 800px) {
     body{
         background-color: #5cdb95;
     }

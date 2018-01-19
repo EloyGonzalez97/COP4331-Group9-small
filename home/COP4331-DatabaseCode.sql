@@ -1,7 +1,7 @@
 /*
 William Gross
 COP 4331
-Last Edited: January 14, 2017
+Last Edited: January 19, 2018
 
 This file contains all of the SQL code that should be required to create the
 database for the small webalex_project_one.. It should be run using the root account. The
@@ -77,7 +77,7 @@ IN
     LastName_Input VARCHAR(35)
 )
 BEGIN
-	INSERT INTO webalex_project_one..Users(User_ID, U_Email, U_Password, U_FirstName, U_LastName)
+	INSERT INTO webalex_project_one.Users(User_ID, U_Email, U_Password, U_FirstName, U_LastName)
     VALUES(UUID(), U_Email_Input, Password_Input, FirstName_Input, LastName_Input);
 END//
 
@@ -109,7 +109,7 @@ IN
     Email_Input VARCHAR(50)
 )
 BEGIN
-	INSERT INTO webalex_project_one..Contacts(Contact_ID, User_ID, C_FirstName, C_LastName, C_PhoneNumber, C_Email)
+	INSERT INTO webalex_project_one.Contacts(Contact_ID, User_ID, C_FirstName, C_LastName, C_PhoneNumber, C_Email)
     VALUES(UUID(), User_ID_Input, FirstName_Input, LastName_Input, PhoneNumber_Input, Email_Input); 
 END//
 
@@ -123,9 +123,9 @@ BEGIN
 END//
 
 #Retrieves all the contacts for a given user ID
-CREATE PROCEDURE webalex_project_one..GetContacts(IN User_ID_Input VARCHAR(36))
+CREATE PROCEDURE webalex_project_one.GetContacts(IN User_ID_Input VARCHAR(36))
 BEGIN
-	SELECT * FROM webalex_project_one..Contacts WHERE User_ID_Input = User_ID; 
+	SELECT * FROM webalex_project_one.Contacts WHERE User_ID_Input = User_ID; 
 END//
 
 DELIMITER ;
