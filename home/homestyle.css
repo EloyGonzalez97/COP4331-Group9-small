@@ -129,10 +129,11 @@ label{
 .form-title{
     font:3em 'Yeseva One', Georgia, serif;
     font-size: 22px; 
-    width: 400px;
-    margin-left: 25%;
+    width: auto;
+    margin-left: auto;
     margin-right: auto;
-    color: #5cdb95;        
+    color: #5cdb95;   
+    display: block;
 }
 .btn{
     font-size: 12px; 
@@ -236,12 +237,38 @@ span.psw {
     from {transform: scale(0)} 
     to {transform: scale(1)}
 }
-@media screen and (max-width: 300px) {
-    span.psw {
-       display: block;
-       float: none;
+@media screen and (max-width: 1200px) {
+    body{
+        background-color: #5cdb95;
     }
-    .cancelbtn {
-       width: 100%;
+    .sign-up{
+        width: 30%;
+        margin-top: 0px;
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+        z-index: 2;
+    }
+    .col-sm-3{
+        display: inline-table;
+    }
+    .extra-section{
+        display: inline-table;
+        margin-top: 350px;
+        z-index: -1;
+        height: auto;
+        width: auto;
+    }
+    .top-section{
+        background-image: none;
+    }
+    .extra-contact-text, .extra-search-text, .extra-last-text, .form-title, .logo{
+        font-size: 3.5vw;
+    }
+    .text{
+        display: block;
+        padding: 0px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
