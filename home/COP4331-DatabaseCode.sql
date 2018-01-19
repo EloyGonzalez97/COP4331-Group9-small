@@ -4,13 +4,13 @@ COP 4331
 Last Edited: January 14, 2017
 
 This file contains all of the SQL code that should be required to create the
-database for the small webalex_project_one. It should be run using the root account. The
+database for the small webalex_project_one.. It should be run using the root account. The
 website should use the account that is created in this file to access the
 database.  
 */
 
 #First, I make sure the database is created.
-#CREATE DATABASE IF NOT EXISTS webalex_webalex_project_one_one;
+#CREATE DATABASE IF NOT EXISTS webalex_project_one;
 
 /*
 Here I create another user that can access the database. The only privilege that
@@ -22,12 +22,12 @@ PASSWORD: Password
 */ 
 
 CREATE USER 'Visitor' IDENTIFIED BY 'Password';
-GRANT EXECUTE ON webalex_webalex_project_one_one.* TO 'Visitor';
+GRANT EXECUTE ON webalex_project_one.* TO 'Visitor';
 
 FLUSH PRIVILEGES;
 
 #Here, the tables for the database are created.
-CREATE TABLE IF NOT EXISTS webalex_webalex_project_one_one.Users(
+CREATE TABLE IF NOT EXISTS webalex_project_one.Users(
 	User_ID VARCHAR(36) NOT NULL,
     U_Email VARCHAR(50) NOT NULL,
 	U_Password VARCHAR(32) NOT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS webalex_webalex_project_one_one.Users(
     UNIQUE (U_Email)
 );
 
-CREATE TABLE IF NOT EXISTS webalex_webalex_project_one_one.Contacts(
+CREATE TABLE IF NOT EXISTS webalex_project_one.Contacts(
 	Contact_ID VARCHAR(36) NOT NULL,
     User_ID VARCHAR(36) NOT NULL,
     C_FirstName VARCHAR(35) NOT NULL,
@@ -52,12 +52,12 @@ CREATE TABLE IF NOT EXISTS webalex_webalex_project_one_one.Contacts(
 
 /*
 Here are the procedure definitions. They include:
-	webalex_project_one.CheckIfTaken(Email);
-	webalex_project_one.NewUser(Email, Password, First Name, Last Name);
-	webalex_project_one.GetID(Email, Password);
-	webalex_project_one.NewContact(User_ID, First Name, Last Name, Phone Number, Email);
-	webalex_project_one.DeleteContact(Contact_ID);
-	webalex_project_one.GetContacts(User_ID);
+	webalex_project_one..CheckIfTaken(Email);
+	webalex_project_one..NewUser(Email, Password, First Name, Last Name);
+	webalex_project_one..GetID(Email, Password);
+	webalex_project_one..NewContact(User_ID, First Name, Last Name, Phone Number, Email);
+	webalex_project_one..DeleteContact(Contact_ID);
+	webalex_project_one..GetContacts(User_ID);
 */
 
 DELIMITER //
@@ -77,7 +77,7 @@ IN
     LastName_Input VARCHAR(35)
 )
 BEGIN
-	INSERT INTO webalex_project_one.Users(User_ID, U_Email, U_Password, U_FirstName, U_LastName)
+	INSERT INTO webalex_project_one..Users(User_ID, U_Email, U_Password, U_FirstName, U_LastName)
     VALUES(UUID(), U_Email_Input, Password_Input, FirstName_Input, LastName_Input);
 END//
 
@@ -109,7 +109,7 @@ IN
     Email_Input VARCHAR(50)
 )
 BEGIN
-	INSERT INTO webalex_project_one.Contacts(Contact_ID, User_ID, C_FirstName, C_LastName, C_PhoneNumber, C_Email)
+	INSERT INTO webalex_project_one..Contacts(Contact_ID, User_ID, C_FirstName, C_LastName, C_PhoneNumber, C_Email)
     VALUES(UUID(), User_ID_Input, FirstName_Input, LastName_Input, PhoneNumber_Input, Email_Input); 
 END//
 
@@ -123,9 +123,9 @@ BEGIN
 END//
 
 #Retrieves all the contacts for a given user ID
-CREATE PROCEDURE webalex_project_one.GetContacts(IN User_ID_Input VARCHAR(36))
+CREATE PROCEDURE webalex_project_one..GetContacts(IN User_ID_Input VARCHAR(36))
 BEGIN
-	SELECT * FROM webalex_project_one.Contacts WHERE User_ID_Input = User_ID; 
+	SELECT * FROM webalex_project_one..Contacts WHERE User_ID_Input = User_ID; 
 END//
 
 DELIMITER ;
