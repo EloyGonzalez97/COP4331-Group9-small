@@ -130,6 +130,15 @@ body{
 .saveContact:hover{
     cursor: pointer;
 }
+.errorTitle{
+    color: red;
+    font-size: 0.6em; 
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    display: block;
+    visibility: hidden;
+}
 .tab{
     padding-top: 10px;
     width: 100%;
