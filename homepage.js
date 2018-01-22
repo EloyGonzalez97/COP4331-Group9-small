@@ -13,11 +13,11 @@ function loginUser()
   //document.getElementById("loginResult").innerHTML = "";
 	
 	var jsonPayload = '{"login" : "' + username + '", "password" : "' + password + '"}';
-    console.log(jsonPayload);
 	var url = urlBase + '/login.' + extension;
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, false);
+    console.log(jsonPayload);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
