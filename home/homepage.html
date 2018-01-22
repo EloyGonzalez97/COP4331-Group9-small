@@ -39,20 +39,17 @@
             <div class= "cover">
             </div>
             <div class="sign-up" action = "/create.php">
-                <form class = "sign-form">
+                <form class = "sign-form" method = "post" action = "/create.php">
                     <br>
                 <label class = "form-title">Create your account</label>
                     <br><br>
-                <input type="text" style = "width: 100%; height: 30px;" placeholder = "First name">
+                <input type="text" style = "width: 100%; height: 30px;" id="firstname" name = "firstName" placeholder = "First name">
                 <br><br>
-                <input type = "text" style = "width: 100%; height: 30px;" placeholder="Last name">
+                <input type = "text" style = "width: 100%; height: 30px;" placeholder="Last name" id="lastname" name = "lastName">
                 <br><br>
-                <input type = "text" style = "width: 100%; height: 30px;" placeholder="Email/Username">
+                <input type = "text" style = "width: 100%; height: 30px;" placeholder="Email/Username" id="email" name = "email">
                 <br><br>
-                <input type="password" style = "width: 100%; height: 30px;" placeholder="Password">
-                <br><br>
-                <input type = "text" style = "width: 100%; height: 30px;" placeholder="Phone number">
-
+                <input type="password" style = "width: 100%; height: 30px;" placeholder="Password" id="pass" name="password">
                 <br><br>
                 <div class="col-xs-6">
                 <div class ="input-group">
