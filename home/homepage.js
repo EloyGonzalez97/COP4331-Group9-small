@@ -60,3 +60,6 @@ window.onclick = function(event)
         modal.style.display = "none";
     }
 }
+$(function(){
+    $("#loginbtn").bind("click", loginUser);
+});
