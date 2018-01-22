@@ -11,7 +11,7 @@ function loginUser()
   var username = document.getElementById("uname").value;
   var password = document.getElementById("psw").value;
 
-  document.getElementById("loginResult").innerHTML = "";
+  //document.getElementById("loginResult").innerHTML = "";
 	
 	var jsonPayload = '{"login" : "' + username + '", "password" : "' + password + '"}';
 	var url = urlBase + '/login.' + extension;
@@ -38,7 +38,7 @@ function loginUser()
     }
 	catch(err)
 	{
-		document.getElementById("loginResult").innerHTML = err.message;
+		//document.getElementById("loginResult").innerHTML = err.message;
 	}
 }
 
