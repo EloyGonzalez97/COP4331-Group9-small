@@ -14,7 +14,7 @@ function loginUser()
   document.getElementById("loginResult").innerHTML = "";
 	
 	var jsonPayload = '{"login" : "' + username + '", "password" : "' + password + '"}';
-	var url = urlBase + '/Login.' + extension;
+	var url = urlBase + '/login.' + extension;
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, false);
