@@ -163,7 +163,8 @@ function addContact(contact) {
         contactId = jsonObject.id;
     }
     catch (err) {
-        // document.getElementById('errorDiv').textContent = 'There was an error saving your contact';
+        document.getElementById('errorDiv').textContent = "There was an error saving your contact";
+        document.getElementById('errorDiv').style.visibility = "visible";
         console.error(err);
         return;
     }
