@@ -17,13 +17,13 @@ function loginUser()
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, false);
+    console.log("After xhr" + jsonPayload);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
 		xhr.send(jsonPayload);
 		
 		var jsonObject = JSON.parse( xhr.responseText );
-        console.log(jsonPayload);
         console.log(jsonObject.id);
 		
 		userId = jsonObject.id;
