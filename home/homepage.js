@@ -45,7 +45,7 @@ function loginUser()
 
 function signUp() 
 {
-     var firstName = document.getElementById("firstname").value;
+  var firstName = document.getElementById("firstname").value;
   var lastName = document.getElementById("lastname").value;
   var email = document.getElementById("email").value;
   var password = document.getElementById("password").value;
