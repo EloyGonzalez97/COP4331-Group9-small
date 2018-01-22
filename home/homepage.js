@@ -45,7 +45,46 @@ function loginUser()
 
 function signUp() 
 {
-    
+     var firstName = document.getElementById("firstname").value;
+  var lastName = document.getElementById("lastname").value;
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("password").value;
+  var phone = document.getElementById("phone").value;
+
+  var jsonPayload = JSON.stringify ({
+	  firstName: firstName;
+	  lastName: lastName;
+	  email: email;
+	  password: password:
+	  phone: phone;
+  })
+	var url = urlBase + '/create.' + extension;
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, false);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.send(jsonPayload);
+		
+		var jsonObject = JSON.parse( xhr.responseText );
+		
+		userId = jsonObject.id;
+		
+		if( userId < 1 )
+		{
+			document.getElementById('errorDiv').textContent = "Error in signing up";
+			document.getElementById('errorDiv').style.visibility = "visible";
+			return;
+        }		
+        
+        else
+        Location.replace("../main/mainpage.html")
+    }
+	catch(err)
+	{
+		//
+	}
 }
 
 function logOut() 
