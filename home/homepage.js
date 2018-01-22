@@ -14,7 +14,7 @@ function loginUser()
   document.getElementById("loginResult").innerHTML = "";
 	
 	var jsonPayload = '{"login" : "' + username + '", "password" : "' + password + '"}';
-	var url = urlBase + '/login.' + extension;
+	var url = urlBase + '/Login.' + extension;
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, false);
@@ -61,6 +61,3 @@ window.onclick = function(event)
         modal.style.display = "none";
     }
 }
-$(function(){
-    $("#loginbtn").bind("click", loginUser);
-});
