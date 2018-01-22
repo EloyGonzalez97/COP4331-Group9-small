@@ -127,6 +127,15 @@ label{
     width: 100px;
     margin-left: 30px;
 }
+.errorTitle{
+    color: red;
+    font-size: 0.6em; 
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    display: block;
+    visibility: hidden;
+}
 .form-title{
     font:3em 'Yeseva One', Georgia, serif;
     font-size: 22px; 
