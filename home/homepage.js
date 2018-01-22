@@ -8,7 +8,7 @@ var extension = "php";
 function loginUser() 
 {
     console.log("here");
-  /*var username = document.getElementById("uname").value;
+  var username = document.getElementById("uname").value;
   var password = document.getElementById("psw").value;
 
   //document.getElementById("loginResult").innerHTML = "";
@@ -38,8 +38,8 @@ function loginUser()
     }
 	catch(err)
 	{
-		//document.getElementById("loginResult").innerHTML = err.message;
-	}*/
+		document.getElementById("loginResult").innerHTML = err.message;
+	}
 }
 
 function signUp() 
