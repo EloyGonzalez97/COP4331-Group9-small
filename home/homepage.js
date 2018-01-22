@@ -7,7 +7,6 @@ var extension = "php";
 
 function loginUser() 
 {
-    console.log("here");
   var username = document.getElementById("uname").value;
   var password = document.getElementById("psw").value;
 
@@ -24,6 +23,8 @@ function loginUser()
 		xhr.send(jsonPayload);
 		
 		var jsonObject = JSON.parse( xhr.responseText );
+        console.log(jsonPayload);
+        console.log(jsonObject.id);
 		
 		userId = jsonObject.id;
 		
@@ -38,7 +39,7 @@ function loginUser()
     }
 	catch(err)
 	{
-		document.getElementById("loginResult").innerHTML = err.message;
+		//document.getElementById("loginResult").innerHTML = err.message;
 	}
 }
 
