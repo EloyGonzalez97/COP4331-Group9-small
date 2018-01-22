@@ -17,25 +17,22 @@ function loginUser()
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, false);
-    console.log(jsonPayload);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
 		xhr.send(jsonPayload);
-		
 		var jsonObject = JSON.parse( xhr.responseText );
-        console.log(jsonObject.id);
-		
-		userId = jsonObject.id;
 		
 		if( userId < 1 )
 		{
-			document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+            
+			//document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
 			return;
         }		
         
-        else
-        Location.replace("mainpage.html")
+        else{
+            Location.replace("mainpage.html")
+        }
     }
 	catch(err)
 	{
