@@ -1,5 +1,6 @@
 /*Author: Eloy Gonzalez*/  
 body{
+        background-color: #282828;
         margin: 0;
         padding: 0;
         overflow-x: hidden;
@@ -8,7 +9,9 @@ body{
         float: left;
         color: #5cdb95;
         font-size: 3em;
-        
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
     .row{
         margin-top: -65px;
@@ -25,7 +28,6 @@ body{
         z-index: -10;
     }
     .extra-section{
-        border: 2px solid #000;
         background-color: #282828;
         width: 100%;
         height: 600px;
@@ -54,6 +56,8 @@ body{
         
     }
     .text {
+        width: 100%;
+        float: middle;
         font:5em 'Yeseva One', Georgia, serif;
         color: #fff;
         padding-top: 100px; 
@@ -98,11 +102,9 @@ body{
 }
 .search-info{
     height: 100%;
-    margin-left:  -4px;
 }
 .last-info{
     height: 100%;
-    margin-left: -4px;
 }
 .extra-contact-text, .extra-search-text, .extra-last-text{
     margin-left: auto;
@@ -215,14 +217,14 @@ span.psw {
     margin: 5% auto 15% auto; 
     border: 1px solid #888;
     border-radius: 25px;
-    width: 30%;
+    width: 400px;
     height: auto;
 }
 
 .close {
     float: right;
     padding-right: 10px;
-    margin-top: -20px;
+    margin-top: -70px;
     color: #000;
     font-size: 30px;
     font-weight: bold;
@@ -255,7 +257,7 @@ span.psw {
         width: 30%;
         margin-top: 0px;
         float: none;
-        margin-left: auto;
+        margin-left: 100px;
         margin-right: auto;
         z-index: 2;
     }
@@ -274,11 +276,19 @@ span.psw {
     }
     .extra-contact-text, .extra-search-text, .extra-last-text, .form-title, .logo{
         font-size: 3.5vw;
+        text-align: center;
+        width: auto;
     }
-    .text{
+    .text, .logo{
         display: block;
         padding: 0px;
         margin-left: auto;
         margin-right: auto;
+    }
+    .close{
+        margin-top: -40px;
+    }
+    .modal-content{
+        width: 40%;
     }
 }
