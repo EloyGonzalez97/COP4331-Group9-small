@@ -1,7 +1,7 @@
 /*
 William Gross
 COP 4331
-Last Edited: January 19, 2018
+Last Edited: January 23, 2018
 
 This file contains all of the SQL code that should be required to create the
 database for the small webalex_project_one.. It should be run using the root account. The
@@ -9,22 +9,6 @@ website should use the account that is created in this file to access the
 database.  
 */
 
-#First, I make sure the database is created.
-#CREATE DATABASE IF NOT EXISTS webalex_project_one;
-
-/*
-Here I create another user that can access the database. The only privilege that
-this user has is to call saved procedures. This is the user that should be used
-to access the database from the website.
-
-USERNAME: Visitor
-PASSWORD: Password
-*/ 
-
-CREATE USER 'Visitor' IDENTIFIED BY 'Password';
-GRANT EXECUTE ON webalex_project_one.* TO 'Visitor';
-
-FLUSH PRIVILEGES;
 
 #Here, the tables for the database are created.
 CREATE TABLE IF NOT EXISTS webalex_project_one.Users(
@@ -52,12 +36,12 @@ CREATE TABLE IF NOT EXISTS webalex_project_one.Contacts(
 
 /*
 Here are the procedure definitions. They include:
-	webalex_project_one..CheckIfTaken(Email);
-	webalex_project_one..NewUser(Email, Password, First Name, Last Name);
-	webalex_project_one..GetID(Email, Password);
-	webalex_project_one..NewContact(User_ID, First Name, Last Name, Phone Number, Email);
-	webalex_project_one..DeleteContact(Contact_ID);
-	webalex_project_one..GetContacts(User_ID);
+	webalex_project_one.CheckIfTaken(Email);
+	webalex_project_one.NewUser(Email, Password, First Name, Last Name);
+	webalex_project_one.GetID(Email, Password);
+	webalex_project_one.NewContact(User_ID, First Name, Last Name, Phone Number, Email);
+	webalex_project_one.DeleteContact(Contact_ID);
+	webalex_project_one.GetContacts(User_ID);
 */
 
 DELIMITER //
@@ -109,8 +93,11 @@ IN
     Email_Input VARCHAR(50)
 )
 BEGIN
+	DECLARE New_ID VARCHAR(36);
+    SET New_ID = UUID();
 	INSERT INTO webalex_project_one.Contacts(Contact_ID, User_ID, C_FirstName, C_LastName, C_PhoneNumber, C_Email)
-    VALUES(UUID(), User_ID_Input, FirstName_Input, LastName_Input, PhoneNumber_Input, Email_Input); 
+    VALUES(New_ID, User_ID_Input, FirstName_Input, LastName_Input, PhoneNumber_Input, Email_Input); 
+    SELECT New_ID;
 END//
 
 #Deletes the contact with the given contact ID
