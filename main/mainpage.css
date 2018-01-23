@@ -81,6 +81,7 @@ body{
     transition: width 0.4s ease-in-out;
 }
 .avatar{
+    border-radius: 60%;
     display: block;
     margin-top: 20%;
     margin-left: auto;
