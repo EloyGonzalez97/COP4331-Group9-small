@@ -57,10 +57,10 @@ body{
     padding-bottom:30px;
 }
 .contactContainer{
-    width: 80%;
-    height: 550px;
+    width: 70%;
+    height: 500px;
     float: right; 
-    margin-right: 20px;
+    margin-right: 80px;
     background-color: #ffff;
     border-radius: 25px;
     border-color: transparent;
@@ -81,6 +81,7 @@ body{
     transition: width 0.4s ease-in-out;
 }
 .avatar{
+    border-radius: 60%;
     display: block;
     margin-top: 20%;
     margin-left: auto;
@@ -108,6 +109,8 @@ body{
     cursor: pointer;
 }
 .removeContact{
+    margin-left: -30px;
+    float: none;
     font-size: 20px;
     color: red;
 }
@@ -115,6 +118,8 @@ body{
     cursor: pointer;
 }
 .editContact{
+    margin-left: -60px;
+    float: left;
     color: #5cdb95;
     width: 20px;
     font-size: 20px;
@@ -123,6 +128,8 @@ body{
     cursor: pointer;
 }
 .saveContact{
+    margin-left: -60px;
+    float: left;
     width: 20px;
     font-size: 20px;
     color: #5cdb95;
@@ -130,21 +137,33 @@ body{
 .saveContact:hover{
     cursor: pointer;
 }
+.errorTitle{
+    color: red;
+    font-size: 0.6em; 
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    display: block;
+    visibility: hidden;
+}
 .tab{
     padding-top: 10px;
     width: 100%;
-    margin-left: auto;
-    margin-right: auto;
     border-collapse: separate;
     border-spacing:0 10px;
+    display: block;
+    height: 80%;
+    overflow: hidden;
 }
 tr{
     width: 100%;
+    display: table-row;
 }
 td{
+    padding-left: 65px;
+    display: table-cell;
     width: auto;
-    text-align: center;
-    white-space: nowrap;
+    white-space: normal;
     
 }
 .modal {
