@@ -12,7 +12,7 @@ function loginUser()
 
   //document.getElementById("loginResult").innerHTML = "";
 	
-	var jsonPayload = '{"login" : "' + username + '", "password" : "' + password + '"}';
+	var jsonPayload = '{"username" : "' + username + '", "password" : "' + password + '"}';
 	var url = urlBase + '/login.' + extension;
 	
 	var xhr = new XMLHttpRequest();
@@ -37,7 +37,7 @@ function loginUser()
         else
         {
         console.log("logged in");
-        window.location.href("mainpage.html");
+        window.location.href = 'mainpage.html';
         }
     }
 	catch(err)
@@ -52,14 +52,15 @@ function signUp()
   var lastName = document.getElementById("lastname").value;
   var email = document.getElementById("email").value;
   var password = document.getElementById("password").value;
-  var phone = document.getElementById("phone").value;
+  
+
 
   var jsonPayload = JSON.stringify ({
-	  firstName: firstName;
-	  lastName: lastName;
-	  email: email;
-	  password: password:
-	  phone: phone;
+	  firstName: firstName,
+	  lastName: lastName,
+	  email: email,
+	  password: password
+	 
   })
 	var url = urlBase + '/create.' + extension;
 
@@ -74,7 +75,7 @@ function signUp()
 		
 		userId = jsonObject.id;
 		
-		if( userId < 1 )
+		if( userId == 0 )
 		{
 			document.getElementById('errorDiv').textContent = "Error in signing up";
 			document.getElementById('errorDiv').style.visibility = "visible";
@@ -82,7 +83,7 @@ function signUp()
         }		
         
         else
-        Location.replace("mainpage.html")
+        window.location.href = 'mainpage.html';
     }
 	catch(err)
 	{
