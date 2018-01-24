@@ -1,4 +1,4 @@
-/*Author: ELoy Gonzalez */
+/*Author: ELoy Gonzalez & Alexander Alvarez */
 var modal = document.getElementById('id01');
 
 var urlBase = 'http://COP4331.hosted.nfoservers.com';
@@ -82,7 +82,7 @@ function signUp()
         }		
         
         else
-        Location.replace("../main/mainpage.html")
+        Location.replace("mainpage.html")
     }
 	catch(err)
 	{
