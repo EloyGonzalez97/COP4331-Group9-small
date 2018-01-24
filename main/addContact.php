@@ -1,6 +1,6 @@
 <?php
 	$inData = getRequestInfo();
-	
+
 	$userId = $inData["userId"];
 	$firstName = $inData["fname"];
 	$lastName = $inData["lname"];
@@ -16,16 +16,24 @@
 	}
 	else
 	{
-		$sql = "CALL webalex_project_one.NewContact($userId, $firstName, $lastName, phoneNumber, email)";
+		$sql = "CALL webalex_project_one.NewContact($userId, $firstName, $lastName, $phoneNumber, $email)";
 		$result = $conn->query($sql);
+		echo $result;
+
 		$conn->close();
 	}
-	
-	returnWithError("");
-	
+
+	returnWithInfo($result);
+
 	function getRequestInfo()
 	{
 		return json_decode(file_get_contents('php://input'), true);
+	}
+
+	function returnWithInfo($result)
+	{
+		$ret = '{"contactId":"' . $result . '","error":""}';
+		sendResultInfoAsJson($ret);
 	}
 
 	function sendResultInfoAsJson( $obj )
@@ -33,7 +41,7 @@
 		header('Content-type: application/json');
 		echo $obj;
 	}
-	
+
 	function returnWithError( $err )
 	{
 		$retValue = '{"error":"' . $err . '"}';
