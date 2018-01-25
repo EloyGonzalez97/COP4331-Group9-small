@@ -2,11 +2,6 @@
 	$inData = getRequestInfo();
 
 	$userId = $inData["userId"];
-	$firstName = $inData["fname"];
-	$lastName = $inData["lname"];
-	$phoneNumber = $inData["phone"];
-	$email = $indData["email"];
-
 
 	$conn = new mysqli("localhost", "webalex", "vr8aTp573L", "webalex_project_one");
 
@@ -16,26 +11,27 @@
 	}
 	else
 	{
-		$sql = "CALL webalex_project_one.NewContact($userId, $firstName, $lastName, $phoneNumber, $email)";
-		$result = $conn->query($sql);
-		echo $result;
-
+		$sql = "CALL webalex_project_one.GetContacts($userId)";
+		$rows = array();
+		while($r = mysqli_fetch_assoc($sql))
+		{
+			$rows[] = $r;
+		}
+		echo json_encode($rows);
 		$conn->close();
 	}
-
-	returnWithInfo($result);
-
+	sendResultInfoAsJson(json_encode($rows));
 	function getRequestInfo()
 	{
 		return json_decode(file_get_contents('php://input'), true);
 	}
 
-	function returnWithInfo($result)
+	/*function returnWithInfo($result)
 	{
 		$ret = '{"contactId":"' . $result . '","error":""}';
 		sendResultInfoAsJson($ret);
 	}
-
+	*/
 	function sendResultInfoAsJson( $obj )
 	{
 		header('Content-type: application/json');

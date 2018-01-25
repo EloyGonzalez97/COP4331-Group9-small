@@ -1,4 +1,4 @@
-/*Author: ELoy Gonzalez */
+/*Author: ELoy Gonzalez & Alexander Alvarez */
 var modal = document.getElementById('id01');
 
 var urlBase = 'http://COP4331.hosted.nfoservers.com';
@@ -12,7 +12,7 @@ function loginUser()
 
   //document.getElementById("loginResult").innerHTML = "";
 	
-	var jsonPayload = '{"login" : "' + username + '", "password" : "' + password + '"}';
+	var jsonPayload = '{"username" : "' + username + '", "password" : "' + password + '"}';
 	var url = urlBase + '/login.' + extension;
 	
 	var xhr = new XMLHttpRequest();
@@ -33,17 +33,20 @@ function loginUser()
 		{
 			document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
 			return;
+			
         }		
         else
         {
         console.log("logged in");
-        window.location.href("mainpage.html");
+        window.location.href = 'mainpage.html';
         }
     }
 	catch(err)
 	{
 		//document.getElementById("loginResult").innerHTML = err.message;
 	}
+
+	return false;
 }
 
 function signUp() 
@@ -52,19 +55,23 @@ function signUp()
   var lastName = document.getElementById("lastname").value;
   var email = document.getElementById("email").value;
   var password = document.getElementById("password").value;
-  var phone = document.getElementById("phone").value;
+  
 
+  /*
   var jsonPayload = JSON.stringify ({
-	  firstName: firstName;
-	  lastName: lastName;
-	  email: email;
-	  password: password:
-	  phone: phone;
-  })
+	  firstName: firstName,
+	  lastName: lastName,
+	  email: email,
+	  password: password
+	 
+  });
+  */
+
+  	var jsonPayload = '{"firstName" : "' + firstName + '", "lastName" : "' + lastName + '", "email" : "' + email + '", "password" : "' + password + '"}';
 	var url = urlBase + '/create.' + extension;
 
 	var xhr = new XMLHttpRequest();
-	xhr.open("POST", url, false);
+	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
@@ -74,15 +81,14 @@ function signUp()
 		
 		userId = jsonObject.id;
 		
-		if( userId < 1 )
+		if( userId == 0 )
 		{
-			document.getElementById('errorDiv').textContent = "Error in signing up";
-			document.getElementById('errorDiv').style.visibility = "visible";
+			document.getElementById("signUpResult").innerHTML = "Error in Sign Up";
 			return;
         }		
         
         else
-        Location.replace("../main/mainpage.html")
+        window.location.href = 'mainpage.html';
     }
 	catch(err)
 	{
