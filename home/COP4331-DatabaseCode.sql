@@ -1,7 +1,7 @@
 /*
 William Gross
 COP 4331
-Last Edited: January 23, 2018
+Last Edited: January 25, 2018
 
 This file contains all of the SQL code that should be required to create the
 database for the small webalex_project_one.. It should be run using the root account. The
@@ -98,6 +98,26 @@ BEGIN
 	INSERT INTO webalex_project_one.Contacts(Contact_ID, User_ID, C_FirstName, C_LastName, C_PhoneNumber, C_Email)
     VALUES(New_ID, User_ID_Input, FirstName_Input, LastName_Input, PhoneNumber_Input, Email_Input); 
     SELECT New_ID;
+END//
+
+#Edits the contact information for a given contact ID
+CREATE PROCEDURE webalex_project_one.EditContact(
+IN
+	Contact_ID_Input VARCHAR(36),
+    FirstName_Input VARCHAR(35),
+    LastName_Input VARCHAR(35),
+    PhoneNumber_Input VARCHAR(11),
+    Email_Input VARCHAR(50)
+)
+BEGIN
+	UPDATE webalex_project_one.Contacts
+    SET
+        C_FirstName = FirstName_Input,
+        C_LastName = LastName_Input,
+        C_PhoneNumber = PhoneNumber_Input,
+        C_Email = Email_Input
+    WHERE
+		Contact_ID = Contact_ID_Input;
 END//
 
 #Deletes the contact with the given contact ID
