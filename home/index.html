@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Personal Contact Manager</title>
-    <link rel="stylesheet" type="text/css" href="homestyle.css">   
+    <link rel="stylesheet" type="text/css" href="homestyle.css">
 </head>
 <body>
     <section class = "top-section">
-       <div id = "pageBody" class = "page-wrap"> 
+       <div id = "pageBody" class = "page-wrap">
         <section class="intro-section">
             <div class = "row">
                 <label class = "logo">PCM</label>
@@ -17,7 +17,6 @@
                   <form class="modal-content animate">
                       <br>
                     <label class = "logo" style= "float: none;">PCM</label>
-                      <label class = "errorTitle" id = "errorDiv">Error</label>
                       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                       <br>
                       <div class="container">
@@ -25,10 +24,9 @@
                             <br><br>
                           <input type="password" style = "height: 50px; width: 100%;" placeholder="Password" id="psw" required>
                             <br><br>
-                          <button type="submit" onclick= "loginUser();" class = "btn" id = "loginbtn" style = "width: 100%; margin-left: 0;">Login</button>
+                          <button type="reset" onclick= "loginUser();" class = "btn" id = "loginbtn" style = "width: 100%; margin-left: 0;">Login</button>
+                          <label class = "errorTitle" id = "errorDiv">Error</label>
                         </div>
-
-   
   </form>
 </div>
             </div>
@@ -37,29 +35,30 @@
              </div>
             <div class= "cover">
             </div>
-            <div class="sign-up" action = "/create.php">
-                <form class = "sign-form" method = "post" action = "/create.php">
+            <div class="sign-up">
+                <form class = "sign-form">
                     <br>
                 <label class = "form-title">Create your account</label>
                     <br><br>
-                <input type="text" style = "width: 100%; height: 30px;" id="firstname" name = "firstName" placeholder = "First name">
+                <input type="text" style = "width: 100%; height: 30px;" id="firstname" name = "firstName" placeholder = "First name" required>
                 <br><br>
-                <input type = "text" style = "width: 100%; height: 30px;" placeholder="Last name" id="lastname" name = "lastName">
+                <input type = "text" style = "width: 100%; height: 30px;" placeholder="Last name" id="lastname" name = "lastName" required>
                 <br><br>
-                <input type = "text" style = "width: 100%; height: 30px;" placeholder="Email/Username" id="email" name = "email">
+                <input type = "text" style = "width: 100%; height: 30px;" placeholder="Email/Username" id="email" name = "email" required>
                 <br><br>
-                <input type="password" style = "width: 100%; height: 30px;" placeholder="Password" id="pass" name="password">
+                <input type="password" style = "width: 100%; height: 30px;" placeholder="Password" id="password" name="password" required>
                 <br><br>
                 <div class="col-xs-6">
                 <div class ="input-group">
                     <span class="input-group-btn">
-                        <button type = "submit" class="btn" type="button"><span>Sign Up</span></button>
+                        <button type = "reset" onclick= "signUp();"class="btn"><span>Sign Up</span></button>
+                        <label class = "errorTitle" id = "errorDiv2">Error</label>
                 </span>
                 </div>
                 </div>
-                </form>    
+                </form>
             </div>
-           
+
     </section>
     </div>
     </section>
@@ -78,7 +77,7 @@
             <img class="contact" src="images/handshake.png" alt = "Handshake" width="200" height="200">
             <h1 class = "extra-last-text"> Strengthen and maintain all your relationships</h1>
         </div>
-        
+
     </section>
     <footer>
         <div class = "footCopy">

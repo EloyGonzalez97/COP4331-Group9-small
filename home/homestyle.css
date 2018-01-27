@@ -4,6 +4,7 @@ body{
         margin: 0;
         padding: 0;
         overflow-x: hidden;
+        text-align: center;
     }
     .logo{
         float: left;
@@ -57,7 +58,6 @@ body{
     }
     .text {
         width: 100%;
-        float: middle;
         font:5em 'Yeseva One', Georgia, serif;
         color: #fff;
         padding-top: 100px; 
@@ -128,8 +128,19 @@ label{
     width: 100px;
     margin-left: 30px;
 }
-.errorTitle{
+#errorDiv{
     color: red;
+    width: 100%;
+    font-size: 0.6em; 
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    display: block;
+    visibility: hidden;
+}
+#errorDiv2{
+    color: red;
+    width: 100%;
     font-size: 0.6em; 
     margin-left: auto;
     margin-right: auto;
@@ -249,7 +260,7 @@ span.psw {
     from {transform: scale(0)} 
     to {transform: scale(1)}
 }
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1100px) {
     body{
         background-color: #5cdb95;
     }
@@ -257,7 +268,7 @@ span.psw {
         width: 30%;
         margin-top: 0px;
         float: none;
-        margin-left: 100px;
+        margin-left: auto;
         margin-right: auto;
         z-index: 2;
     }
@@ -279,7 +290,13 @@ span.psw {
         text-align: center;
         width: auto;
     }
-    .text, .logo{
+    .logo{
+        display: block;
+        padding: 0px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .text{
         display: block;
         padding: 0px;
         margin-left: auto;
@@ -290,5 +307,8 @@ span.psw {
     }
     .modal-content{
         width: 40%;
+    }
+    .top-title{
+        width: 100%;
     }
 }

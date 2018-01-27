@@ -7,93 +7,95 @@ var extension = "php";
 
 function loginUser() 
 {
-  var username = document.getElementById("uname").value;
-  var password = document.getElementById("psw").value;
-
-  //document.getElementById("loginResult").innerHTML = "";
-	
-	var jsonPayload = '{"username" : "' + username + '", "password" : "' + password + '"}';
-	var url = urlBase + '/login.' + extension;
-	
-	var xhr = new XMLHttpRequest();
-	xhr.open("POST", url, false);
-    
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	try
-	{
-        
-		xhr.send(jsonPayload);
-		var jsonObject = JSON.parse(xhr.responseText);
-        
+	if(document.getElementById("uname").validity.valid && document.getElementById("psw").validity.valid){
+		var username = document.getElementById("uname").value;
+		var password = document.getElementById("psw").value;
 		
-		var userId = jsonObject.id;
-        console.log(jsonObject.firstName);
 		
-		if( userId === 0 )
+		var jsonPayload = '{"login" : "' + username + '", "password" : "' + password + '"}';
+		var url = urlBase + '/login.' + extension;
+		
+		var xhr = new XMLHttpRequest();
+		xhr.open("POST", url, false);
+		xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+		try
 		{
-			document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
-			return;
+			xhr.send(jsonPayload);
+			var jsonObject = JSON.parse( xhr.responseText );
+			var userId = jsonObject.id;
 			
-        }		
-        else
-        {
-        console.log("logged in");
-        window.location.href = 'mainpage.html';
-        }
+			if( userId !== 0)
+			{
+				sessionStorage.setItem('userID', userId);
+				sessionStorage.setItem('firstName', jsonObject.firstName);
+				sessionStorage.setItem('lastName', jsonObject.lastName);
+				document.getElementById('id01').style.display= "none";
+				window.location.href = "http://cop4331.hosted.nfoservers.com/mainpage.html";
+			}		
+			
+			else
+			{
+				document.getElementById('id01').style.display= "block";
+				document.getElementById("errorDiv").textContent = "*User/Password combination incorrect*";
+				document.getElementById("errorDiv").style.visibility = "visible";
+				return;
+			}
+		}
+		catch(err)
+		{
+			//document.getElementById("loginResult").innerHTML = err.message;
+		}
+		return false;
+    }else{
+        document.getElementById("errorDiv").textContent = "*Please fill out all the fields*";
+        document.getElementById("errorDiv").style.visibility = "visible";
     }
-	catch(err)
-	{
-		//document.getElementById("loginResult").innerHTML = err.message;
-	}
-
-	return false;
 }
 
 function signUp() 
 {
-  var firstName = document.getElementById("firstname").value;
-  var lastName = document.getElementById("lastname").value;
-  var email = document.getElementById("email").value;
-  var password = document.getElementById("password").value;
+	if(document.getElementById("firstname").validity.valid && document.getElementById("lastname").validity.valid &&
+	 document.getElementById("email").validity.valid && document.getElementById("password").validity.valid) 
+ 	{
   
+		var firstName = document.getElementById("firstname").value;
+		var lastName = document.getElementById("lastname").value;
+		var email = document.getElementById("email").value;
+		var password = document.getElementById("password").value;
 
-  /*
-  var jsonPayload = JSON.stringify ({
-	  firstName: firstName,
-	  lastName: lastName,
-	  email: email,
-	  password: password
-	 
-  });
-  */
-
-  	var jsonPayload = '{"firstName" : "' + firstName + '", "lastName" : "' + lastName + '", "email" : "' + email + '", "password" : "' + password + '"}';
-	var url = urlBase + '/create.' + extension;
-
-	var xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	try
-	{
-		xhr.send(jsonPayload);
-		
-		var jsonObject = JSON.parse( xhr.responseText );
-		
-		userId = jsonObject.id;
-		
-		if( userId == 0 )
+		var jsonPayload = '{"firstName" : "' + firstName + '", "lastName" : "' + lastName + '", "email" : "' + email + '", "password" : "' + password + '"}';
+		var url = urlBase + '/create.' + extension;
+		var xhr = new XMLHttpRequest();
+		xhr.open("POST", url, false);
+		xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+		try
 		{
-			document.getElementById("signUpResult").innerHTML = "Error in Sign Up";
-			return;
-        }		
-        
-        else
-        window.location.href = 'mainpage.html';
+			xhr.send(jsonPayload);
+			var jsonObject = JSON.parse( xhr.responseText );
+			userId = jsonObject.id;
+			
+			if( userId == 0 )
+			{
+				
+				return;
+			}		
+			
+			else
+			{
+				sessionStorage.setItem('userID', userId);
+				sessionStorage.setItem('firstName', firstName);
+				sessionStorage.setItem('lastName', lastName);
+				window.location.href = "http://cop4331.hosted.nfoservers.com/mainpage.html";
+			}
+		}
+		catch(err)
+		{
+			
+		}
+	}else{
+        document.getElementById("errorDiv2").textContent = "*Please fill out all the fields*";
+        document.getElementById("errorDiv2").style.visibility = "visible";
     }
-	catch(err)
-	{
-		//
-	}
 }
 
 function logOut() 
