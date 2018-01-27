@@ -16,7 +16,7 @@
 
     //$sql = "CALL webalex_project_one.GetID($email, $pass)";
     $temp = md5($data["password"]);
-    $sql = "SELECT User_ID, U_FirstName, U_LastName FROM Users where U_Email='" . $data["login"] . "' and U_Password = '" . $temp . "'";
+    $sql = "SELECT User_ID, U_FirstName, U_LastName FROM Users where U_Email='" . htmlspecialchars($data["login"]) . "' and U_Password = '" . htmlspecialchars($temp) . "'";
     $result = $conn->query($sql);
 
     if($result->num_rows > 0) {
@@ -27,8 +27,8 @@
       $lastName = $row["U_LastName"];
 
     } else {
-      echo "failed query";
       returnWithError("User does not exist");
+      exit();
     }
     $conn->close();
   }
