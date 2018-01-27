@@ -1,3 +1,4 @@
+
 body{
     margin: 0;
     background-color: #e9ebee; 
@@ -6,6 +7,14 @@ body{
     overflow: hidden;
     background-color: #282828;
     top: 0;
+}
+#noContact{
+    visibility: hidden;
+    margin-top: -300px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
 }
 .logo{
     float: left;
@@ -79,6 +88,7 @@ body{
     padding: 12px 20px 12px 40px;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
+    outline: none;
 }
 .avatar{
     border-radius: 60%;
@@ -88,11 +98,13 @@ body{
     margin-right: auto;
     padding-bottom: 20px;
 }
+.row{
+    text-align: center;
+}
 .profileInfo{
     margin-top: 10px;
-    padding-left: 10px;
-    display: inline-flex;
-    width: 80%;
+    width: auto;
+    text-transform: capitalize;
     
 }
 .search:focus {
@@ -153,18 +165,26 @@ body{
     border-spacing:0 10px;
     display: block;
     height: 80%;
-    overflow: hidden;
+    overflow: scroll;
 }
 tr{
     width: 100%;
     display: table-row;
 }
 td{
+    font-size: 1.5vw;
     padding-left: 65px;
     display: table-cell;
     width: auto;
     white-space: normal;
     
+}
+.tabHeader{
+    width: auto;
+    padding-left: 65px;
+    background-color: #5cdb95;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    color: #fff;
 }
 .modal {
     display: none; 
@@ -232,12 +252,16 @@ td{
     from {transform: scale(0)} 
     to {transform: scale(1)}
 }
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 700px) {
     span.psw {
        display: block;
        float: none;
     }
     .cancelbtn {
        width: 100%;
+    }
+    .avatar{
+        width: 60px;
+        height: 60px;
     }
 }
