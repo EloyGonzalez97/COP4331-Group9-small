@@ -1,14 +1,18 @@
 /*Author: Eloy Gonzalez*/  
 body{
+        background-color: #282828;
         margin: 0;
         padding: 0;
         overflow-x: hidden;
+        text-align: center;
     }
     .logo{
         float: left;
         color: #5cdb95;
         font-size: 3em;
-        
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
     .row{
         margin-top: -65px;
@@ -25,10 +29,12 @@ body{
         z-index: -10;
     }
     .extra-section{
-        border: 2px solid #000;
         background-color: #282828;
         width: 100%;
         height: 600px;
+        display: inline-flex;
+        margin-left: auto;
+        margin-right: auto;
     }
     .main-frame{
         background-color: #3FEEE6;
@@ -36,8 +42,8 @@ body{
         height: 100%;
     }
     .sign-up{
-        width: 300px;
-        height: 450px;
+        width: 250px;
+        height: auto;
         display: block;
         background-color:#fff; 
         border-radius: 25px;
@@ -47,9 +53,11 @@ body{
         margin-top: -230px;
         padding-left: 50px;
         padding-right: 50px;
+        padding-bottom: 20px;
         
     }
     .text {
+        width: 100%;
         font:5em 'Yeseva One', Georgia, serif;
         color: #fff;
         padding-top: 100px; 
@@ -70,8 +78,8 @@ body{
 }
 .col-sm-3{
     background-color: #282828;
-    padding-left: 11px;
-    width: 32%;
+    margin-left: auto;
+    width: 30%;
     height: 100%;
     display: inline-grid;
     border: solid 1px;
@@ -83,6 +91,7 @@ body{
     border-color: #5cdb95;
 }
 .contact{
+    display: block;
     margin-left: auto;
     margin-right: auto;
     padding-top: 20%;
@@ -93,11 +102,9 @@ body{
 }
 .search-info{
     height: 100%;
-    margin-left:  -4px;
 }
 .last-info{
     height: 100%;
-    margin-left: -4px;
 }
 .extra-contact-text, .extra-search-text, .extra-last-text{
     margin-left: auto;
@@ -121,24 +128,46 @@ label{
     width: 100px;
     margin-left: 30px;
 }
+#errorDiv{
+    color: red;
+    width: 100%;
+    font-size: 0.6em; 
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    display: block;
+    visibility: hidden;
+}
+#errorDiv2{
+    color: red;
+    width: 100%;
+    font-size: 0.6em; 
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    display: block;
+    visibility: hidden;
+}
 .form-title{
     font:3em 'Yeseva One', Georgia, serif;
     font-size: 22px; 
-    width: 400px;
-    margin-left: 25%;
+    width: auto;
+    margin-left: auto;
     margin-right: auto;
-    color: #5cdb95;        
+    color: #5cdb95;   
+    display: block;
 }
 .btn{
     font-size: 12px; 
-    margin-left: 40%;
+    margin-left: auto;
+    margin-right: auto;
     color: white ;
     width: 70px;
     height: 35px;
     background-color: #5cdb95;
     border: 0.5px solid #5cdb95;
     border-radius: 5px;
-    display: inline-block;
+    display: block;
 }
 .btn:hover{
     background-color: #7fff99;
@@ -172,7 +201,8 @@ img.avatar {
 }
 
 .container {
-    padding: 16px;
+    padding: 30px;
+    padding-top: 15px;
 }
 
 span.psw {
@@ -198,14 +228,14 @@ span.psw {
     margin: 5% auto 15% auto; 
     border: 1px solid #888;
     border-radius: 25px;
-    width: 30%;
-    height: 50%;
+    width: 400px;
+    height: auto;
 }
 
 .close {
     float: right;
     padding-right: 10px;
-    margin-top: -20px;
+    margin-top: -70px;
     color: #000;
     font-size: 30px;
     font-weight: bold;
@@ -213,7 +243,7 @@ span.psw {
 
 .close:hover,
 .close:focus {
-    color: #5cdb95;
+    color: red;
     cursor: pointer;
 }
 .animate {
@@ -230,12 +260,55 @@ span.psw {
     from {transform: scale(0)} 
     to {transform: scale(1)}
 }
-@media screen and (max-width: 300px) {
-    span.psw {
-       display: block;
-       float: none;
+@media screen and (max-width: 1100px) {
+    body{
+        background-color: #5cdb95;
     }
-    .cancelbtn {
-       width: 100%;
+    .sign-up{
+        width: 30%;
+        margin-top: 0px;
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+        z-index: 2;
+    }
+    .col-sm-3{
+        display: inline-table;
+    }
+    .extra-section{
+        display: inline-table;
+        margin-top: 350px;
+        z-index: -1;
+        height: auto;
+        width: auto;
+    }
+    .top-section{
+        background-image: none;
+    }
+    .extra-contact-text, .extra-search-text, .extra-last-text, .form-title, .logo{
+        font-size: 3.5vw;
+        text-align: center;
+        width: auto;
+    }
+    .logo{
+        display: block;
+        padding: 0px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .text{
+        display: block;
+        padding: 0px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .close{
+        margin-top: -40px;
+    }
+    .modal-content{
+        width: 40%;
+    }
+    .top-title{
+        width: 100%;
     }
 }
