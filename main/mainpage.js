@@ -9,50 +9,55 @@ $(document).ready(function () {
           document.getElementById('Lname').textContent =lastName;
     }
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", urlBase + 'getContacts.php', false);
+    xhr.open("POST", urlBase + 'getContacts.php', true);
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
     var jsonPayload = JSON.stringify({
       userId: userId
     });
     try {
-      xhr.send(jsonPayload);
+            xhr.send(jsonPayload);
+            xhr.onreadystatechange = function () {
+                if(this.readyState == 4 && this.status == 200)
+                {
+        				var i;
+        				var jsonList = JSON.parse('[' + xhr.responseText.replace(/}{/g, '},{') + ']');
 
-        var i;
-        var jsonList = JSON.parse('[' + xhr.responseText.replace(/}{/g, '},{') + ']');
+       					 if(jsonList.length === 0){
+          					 document.getElementById('contactTable').style.visibility = "hidden";
+           					 document.getElementById('noContact').style.visibility = "visible";
+        				 }
 
-        if(jsonList.length === 0){
-            document.getElementById('contactTable').style.visibility = "hidden";
-            document.getElementById('noContact').style.visibility = "visible";
-        }
-
-        for(i = 0; i < jsonList.length; i++)
-        {
-        var fname = jsonList[i].firstName;
-        var lname = jsonList[i].lastName;
-        var phone = jsonList[i].phoneNumber;
-        var email = jsonList[i].email;
-        var contactId = jsonList[i].contactId;
-        var table = document.getElementById('contactTable').getElementsByTagName('tbody')[0];
-        var row = table.insertRow(0);
-        row.contactId = contactId;
-
-
-
-        var delbutton = row.insertCell(0);
-        var editbutton = row.insertCell(1);
-        var firstn = row.insertCell(2);
-        var lastn = row.insertCell(3);
-        var cell = row.insertCell(4);
-        var em = row.insertCell(5);
+       					 for(i = 0; i < jsonList.length; i++)
+      					  {
+        					var fname = jsonList[i].firstName;
+       						var lname = jsonList[i].lastName;
+       						var phone = jsonList[i].phoneNumber;
+        					var email = jsonList[i].email;
+        					var contactId = jsonList[i].contactId;
+        					var table = document.getElementById('contactTable').getElementsByTagName('tbody')[0];
+        					var row = table.insertRow(0);
+        					row.contactId = contactId;
 
 
-        delbutton.innerHTML = "<span class = 'removeContact' onclick='deleteRow(this);'>&times;</span>";
-        editbutton.innerHTML = "<span class = 'editContact'>&#43;</span>";
-        firstn.innerHTML = fname;
-        lastn.innerHTML = lname;
-        cell.innerHTML = phone;
-        em.innerHTML = email;
-      }
+
+        					var delbutton = row.insertCell(0);
+        					var editbutton = row.insertCell(1);
+        					var firstn = row.insertCell(2);
+        					var lastn = row.insertCell(3);
+        					var cell = row.insertCell(4);
+        					var em = row.insertCell(5);
+
+
+        					delbutton.innerHTML = "<span class = 'removeContact' onclick='deleteRow(this);'>&times;</span>";
+        					editbutton.innerHTML = "<span class = 'editContact'>&#43;</span>";
+        					firstn.innerHTML = fname;
+        					lastn.innerHTML = lname;
+        					cell.innerHTML = phone;
+        					em.innerHTML = email;
+                            $(".editContact").bind("click", editRow);
+      					}
+                    }
+                }
         xhr.onerror = function (error) {
          throw error;
         };
@@ -77,9 +82,6 @@ $('#contactInput').keyup(function() {
   }).show();
 });
 
-// $('#acknowledgeButton').bind('click', function () {
-//     document.getElementById('errorDiv').textContent = '';
-// })
 
 var modal = document.getElementById('id01');
 var userId = sessionStorage.getItem('userID');
@@ -121,10 +123,14 @@ function saveRow(r){
             email: email,
             contactId: contactId
         });
-        xhr.open('POST', urlBase + 'UpdateContact.php', false);
+        xhr.open('POST', urlBase + 'UpdateContact.php', true);
         xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
         try {
             xhr.send(jsonPayload);
+            xhr.onerror = function(err)
+            {
+                console.log(err);
+            }
         } catch (err) {
             console.error(err);
         }
@@ -149,10 +155,14 @@ function deleteRow(r) {
     try {
        var xhr = new XMLHttpRequest();
 
-        xhr.open("POST", urlBase + 'deleteContact.php', false);
+        xhr.open("POST", urlBase + 'deleteContact.php', true);
         xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
         try {
             xhr.send(JSON.stringify({ contactId: contactId }));
+            xhr.onerror = function(err)
+            {
+                console.log(err);
+            }
         } catch (err) {
             console.error(err);
         }
@@ -204,37 +214,43 @@ function addContact(contact) {
 
     var xhr = new XMLHttpRequest();
     var contactId;
-    xhr.open("POST", url, false);
+    xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
     try {
+
+        xhr.onreadystatechange = function () {
+            if(this.readyState == 4 && this.status == 200)
+            {
+
+                var jsonObject = JSON.parse( xhr.responseText );
+                var table = document.getElementById('contactTable').getElementsByTagName('tbody')[0];
+                var row = table.insertRow(0);
+                contactId = jsonObject.contactId;
+                row.contactId = contactId;
+                console.log(jsonObject);
+
+                var delbutton = row.insertCell(0);
+                var editbutton = row.insertCell(1);
+                var firstn = row.insertCell(2);
+                var lastn = row.insertCell(3);
+                var cell = row.insertCell(4);
+                var em = row.insertCell(5);
+
+                delbutton.innerHTML = "<span class = 'removeContact' onclick='deleteRow(this);'>&times;</span>";
+                editbutton.innerHTML = "<span class = 'editContact' onclick='editRow();'>&#43;</span>";
+                firstn.innerHTML = fname;
+                lastn.innerHTML = lname;
+                cell.innerHTML = phone;
+                em.innerHTML = email;
+
+    	        $(".editContact").bind("click", editRow);
+                document.getElementById('contactTable').style.visibility = "visible";
+                document.getElementById('noContact').style.visibility = "hidden";
+                $('#mod').get(0).reset();
+            }
+        }
+	
         xhr.send(jsonPayload);
-      //  xhr.onload = function () {
-            var jsonObject = JSON.parse( xhr.responseText );
-            var table = document.getElementById('contactTable').getElementsByTagName('tbody')[0];
-            var row = table.insertRow(0);
-            contactId = jsonObject.contactId;
-            row.contactId = contactId;
-
-
-            var delbutton = row.insertCell(0);
-            var editbutton = row.insertCell(1);
-            var firstn = row.insertCell(2);
-            var lastn = row.insertCell(3);
-            var cell = row.insertCell(4);
-            var em = row.insertCell(5);
-
-            delbutton.innerHTML = "<span class = 'removeContact' onclick='deleteRow(this);'>&times;</span>";
-            editbutton.innerHTML = "<span class = 'editContact' onclick='editRow();'>&#43;</span>";
-            firstn.innerHTML = fname;
-            lastn.innerHTML = lname;
-            cell.innerHTML = phone;
-            em.innerHTML = email;
-
-            document.getElementById('contactTable').style.visibility = "visible";
-            document.getElementById('noContact').style.visibility = "hidden";
-            $('#mod').get(0).reset();
-
-    //    };
         xhr.onerror = function (error) {
             throw error;
         };
@@ -263,5 +279,5 @@ function addContactFromModal(){
 $(function(){
     $(".editContact").bind("click", editRow);
     $("#done").bind("click", addContactFromModal);
+    return false;
 });
-
