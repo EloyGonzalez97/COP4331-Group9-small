@@ -16,30 +16,36 @@ function loginUser()
 		var url = urlBase + '/login.' + extension;
 		
 		var xhr = new XMLHttpRequest();
-		xhr.open("POST", url, false);
+		xhr.open("POST", url, true);
 		xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 		try
 		{
-			xhr.send(jsonPayload);
-			var jsonObject = JSON.parse( xhr.responseText );
-			var userId = jsonObject.id;
-			
-			if( userId !== 0)
+			xhr.onreadystatechange = function()
 			{
-				sessionStorage.setItem('userID', userId);
-				sessionStorage.setItem('firstName', jsonObject.firstName);
-				sessionStorage.setItem('lastName', jsonObject.lastName);
-				document.getElementById('id01').style.display= "none";
-				window.location.href = "http://cop4331.hosted.nfoservers.com/mainpage.html";
-			}		
+				if(this.readyState == 4 && this.status == 200)
+				{
+					
+					var jsonObject = JSON.parse( xhr.responseText );
+					var userId = jsonObject.id;
 			
-			else
-			{
-				document.getElementById('id01').style.display= "block";
-				document.getElementById("errorDiv").textContent = "*User/Password combination incorrect*";
-				document.getElementById("errorDiv").style.visibility = "visible";
-				return;
+					if( userId !== 0)
+					{
+						sessionStorage.setItem('userID', userId);
+						sessionStorage.setItem('firstName', jsonObject.firstName);
+						sessionStorage.setItem('lastName', jsonObject.lastName);
+						document.getElementById('id01').style.display= "none";
+						window.location.href = "http://cop4331.hosted.nfoservers.com/mainpage.html";
+					}		
+					else
+					{
+						document.getElementById('id01').style.display= "block";
+						document.getElementById("errorDiv").textContent = "*User/Password combination incorrect*";
+						document.getElementById("errorDiv").style.visibility = "visible";
+						return;
+					}
+				}
 			}
+			xhr.send(jsonPayload);
 		}
 		catch(err)
 		{
@@ -66,27 +72,34 @@ function signUp()
 		var jsonPayload = '{"firstName" : "' + firstName + '", "lastName" : "' + lastName + '", "email" : "' + email + '", "password" : "' + password + '"}';
 		var url = urlBase + '/create.' + extension;
 		var xhr = new XMLHttpRequest();
-		xhr.open("POST", url, false);
+		xhr.open("POST", url, true);
 		xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 		try
 		{
-			xhr.send(jsonPayload);
-			var jsonObject = JSON.parse( xhr.responseText );
-			userId = jsonObject.id;
-			
-			if( userId == 0 )
+			xhr.onreadystatechange = function()
 			{
+				if(this.readyState == 4 && this.status == 200)
+				{
+					
+					var jsonObject = JSON.parse( xhr.responseText );
+					userId = jsonObject.id;
+			
+					if( userId == 0 )
+					{
 				
-				return;
-			}		
+						return;
+					}		
 			
-			else
-			{
-				sessionStorage.setItem('userID', userId);
-				sessionStorage.setItem('firstName', firstName);
-				sessionStorage.setItem('lastName', lastName);
-				window.location.href = "http://cop4331.hosted.nfoservers.com/mainpage.html";
+					else
+					{
+						sessionStorage.setItem('userID', userId);
+						sessionStorage.setItem('firstName', firstName);
+						sessionStorage.setItem('lastName', lastName);
+						window.location.href = "http://cop4331.hosted.nfoservers.com/mainpage.html";
+					}
+				}
 			}
+			xhr.send(jsonPayload);
 		}
 		catch(err)
 		{
